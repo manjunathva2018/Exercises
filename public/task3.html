@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>operation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/bootstrap.min.css" />
+    <script type="text/javascript" src="assets/js/jQuery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <style>
+     .top-margin{
+         margin-top:30px;
+     }
+     .red-color{
+         color: red;
+     }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 well top-margin">
+                    <form action="">
+                            <div class="form-group row">
+                                    <div class="col-md-6">
+                                      <label for="ex1">Enter any Number:</label>
+                                      <input class="form-control" autocomplete="off" id="ex1" type="text">
+                                      <span id="errmsg1" class="red-color">Digits only</span>
+                                    </div>
+                                </div>
+                                <button class="btn btn-info" id="cal">Submit</button>
+                    </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                    <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th>Operation</th>
+                                <th>Result</th>
+                              </tr>
+                            </thead>
+                            <tbody id="content">
+                             
+                            </tbody>
+                          </table>
+            </div>    
+        </div>
+    </div>
+
+    <script type="text/javascript" src="assets/task3.js">
+      
+    </script>
+</body>
+</html>

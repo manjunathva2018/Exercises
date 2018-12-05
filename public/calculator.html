@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/bootstrap.min.css" />
+    <script type="text/javascript" src="assets/js/jQuery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <style>
+     .top-margin{
+         margin-top:30px;
+     }
+     .red-color{
+         color: red;
+     }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 well top-margin">
+                    <form action="">
+                            <div class="form-group row">
+                                    <div class="col-md-6">
+                                      <label for="ex1">Enter Operand 1:</label>
+                                      <input class="form-control" autocomplete="off" id="ex1" type="text">
+                                      <span id="errmsg1" class="red-color">Digits only</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <label for="ex2">Enter Operand 2:</label>
+                                      <input class="form-control" id="ex2" autocomplete="off" type="text">
+                                      <span id="errmsg2" class="red-color">Digits only</span>
+                                    </div>
+                                </div>
+                                <button class="btn btn-info" id="cal">Calculate</button>
+                    </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                    <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th>First Operand</th>
+                                <th>Operation</th>
+                                <th>Second Operand</th>
+                                <th>Result</th>
+                              </tr>
+                            </thead>
+                            <tbody id="content">
+                             
+                            </tbody>
+                          </table>
+            </div>    
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $("#errmsg1").hide();
+            $("#errmsg2").hide();
+            $("table").hide();
+            $("#ex1").keypress(function (e) {
+     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        $("#errmsg1").show().fadeOut("slow");
+               return false;
+    }})
+    $("#ex2").keypress(function (e) {
+     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        $("#errmsg2").show().fadeOut("slow");
+               return false;
+     }
+   });
+
+$("#cal").click(function(e){
+    e.preventDefault();
+    var operation=['+','-','*','/','avg'];
+    var operand1=Number($('#ex1').val());
+    var operand2=Number($('#ex2').val());
+    var add,sub,mult,div,avg;
+   for(var i=0;i<operation.length;i++){
+       if(operation[i]==='+'){
+            add=operand1+operand2;
+           
+       }else if(operation[i]==='-'){
+            sub=operand1-operand2;
+           
+       }else if(operation[i]==='*'){
+             mult=operand1*operand2;
+           
+       }else if(operation[i]==='/'){
+           if(operand2!=0 && operand1>operand2){
+            div=operand1/operand2;
+           }
+           else{
+               div="Divide Error";
+           }
+         
+       }else if(operation[i]==='avg'){
+               avg=((operand1+operand2)/2)*100;
+              
+       }
+   }
+   console.log("add",add,sub,mult,div,avg);
+   $('#content').append("<tr><td>"+operand1+"</td><td>+</td><td>"+operand2+"</td><td>"+add+"</td></tr> <tr><td>"+operand1+"</td><td>-</td><td>"+operand2+"</td><td>"+sub+"</td></tr> <tr><td>"+operand1+"</td><td>*</td><td>"+operand2+"</td><td>"+mult+"</td></tr> <tr><td>"+operand1+"</td><td>/</td><td>"+operand2+"</td><td>"+div+"</td></tr> <tr><td>"+operand1+"</td><td>average</td><td>"+operand2+"</td><td>"+avg+"</td></tr>");
+   $("table").show();
+})
+
+        })
+    </script>
+</body>
+</html>
